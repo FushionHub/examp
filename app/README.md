@@ -34,3 +34,11 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Features
+
+-   **CBT (Computer Based Test) Section:**
+    -   Practice exam questions with a clean, intuitive interface.
+    -   Navigate between questions using "Next," "Previous," and a question number grid.
+    -   A countdown timer to simulate exam conditions.
+    -   Score tracking and a results page to view your performance.

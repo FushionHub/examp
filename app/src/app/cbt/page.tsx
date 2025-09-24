@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { mockQuestions } from '@/lib/mock-data';
 import { Question } from '@/types/questions';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
@@ -8,6 +9,8 @@ import Timer from '@/components/Timer';
 
 const CBTPage = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [userAnswers, setUserAnswers] = useState<string[]>(Array(mockQuestions.length).fill(''));
+  const router = useRouter();
   const currentQuestion: Question = mockQuestions[currentQuestionIndex];
 
   const handleNext = () => {
@@ -26,6 +29,22 @@ const CBTPage = () => {
     setCurrentQuestionIndex(index);
   };
 
+  const handleAnswerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newAnswers = [...userAnswers];
+    newAnswers[currentQuestionIndex] = e.target.value;
+    setUserAnswers(newAnswers);
+  };
+
+  const handleSubmit = () => {
+    let score = 0;
+    userAnswers.forEach((answer, index) => {
+      if (answer === mockQuestions[index].answer) {
+        score++;
+      }
+    });
+    router.push(`/cbt/results?score=${score}&total=${mockQuestions.length}`);
+  };
+
   return (
     <div className="p-8 bg-gray-100 min-h-screen">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
@@ -40,7 +59,14 @@ const CBTPage = () => {
             {currentQuestion.options.map((option, index) => (
               <li key={index} className="mb-2">
                 <label className="flex items-center">
-                  <input type="radio" name="option" className="mr-2" />
+                  <input
+                    type="radio"
+                    name="option"
+                    value={option}
+                    checked={userAnswers[currentQuestionIndex] === option}
+                    onChange={handleAnswerChange}
+                    className="mr-2"
+                  />
                   {option}
                 </label>
               </li>
@@ -71,7 +97,10 @@ const CBTPage = () => {
               </button>
             ))}
           </div>
-          <button className="bg-brand-primary text-white px-8 py-2 rounded-md">
+          <button
+            onClick={handleSubmit}
+            className="bg-brand-primary text-white px-8 py-2 rounded-md"
+          >
             Submit
           </button>
         </div>
