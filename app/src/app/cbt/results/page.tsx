@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 const ResultsPage = () => {
   const searchParams = useSearchParams();
@@ -15,9 +16,11 @@ const ResultsPage = () => {
         <p className="text-xl mb-8">
           You scored {score} out of {total}.
         </p>
-        <a href="/cbt" className="bg-brand-primary text-white px-8 py-2 rounded-md">
-          Try Again
-        </a>
+        <Link href="/cbt">
+          <div className="bg-brand-primary text-white px-8 py-2 rounded-md cursor-pointer">
+            Try Again
+          </div>
+        </Link>
       </div>
     </div>
   );
