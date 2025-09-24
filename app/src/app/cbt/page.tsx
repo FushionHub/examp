@@ -42,7 +42,8 @@ const CBTPage = () => {
         score++;
       }
     });
-    router.push(`/cbt/results?score=${score}&total=${mockQuestions.length}`);
+    const answersQueryParam = encodeURIComponent(JSON.stringify(userAnswers));
+    router.push(`/cbt/results?score=${score}&total=${mockQuestions.length}&answers=${answersQueryParam}`);
   };
 
   return (

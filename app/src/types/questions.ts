@@ -4,4 +4,5 @@ export interface Question {
   options: string[];
   answer: string;
   subject: string;
+  explanation: string;
 }
