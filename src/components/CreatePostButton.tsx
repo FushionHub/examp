@@ -10,7 +10,7 @@ const CreatePostButton = () => {
 
   if (user?.role === 'lecturer' || user?.role === 'blogger') {
     return (
-      <Link href="/news/create">
+      <Link href="/dashboard/lecturer/create-post">
         <div className="bg-brand-primary text-white px-4 py-2 rounded-md cursor-pointer">
           Create Post
         </div>
