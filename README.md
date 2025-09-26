@@ -21,6 +21,16 @@ You need to have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/
     npm install
     ```
 
+### Configuration
+
+To use the AI features, you need to add your Google API key to a local environment file.
+
+1.  Create a file named `.env.local` in the root of the project.
+2.  Add the following line to the file, replacing `your_api_key` with your actual key:
+    ```
+    GOOGLE_API_KEY=your_api_key
+    ```
+
 ### Running the Application
 
 To run the application in development mode, execute the following command:
@@ -35,3 +45,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 -   **User Authentication:** A robust authentication system using `next-auth` with support for different user roles.
 -   **Role-Based Access Control:** The application supports different user roles, such as student, lecturer, and admin, with role-based UI elements and protected API routes.
+-   **AI-Powered Explanations:** The CBT results page can generate detailed, AI-powered explanations for exam answers using Google's Gemini model.
