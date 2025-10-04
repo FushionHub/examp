@@ -16,13 +16,19 @@ You need to have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/
     ```sh
     git clone https://github.com/your_username_/your_repository.git
     ```
-2.  Navigate to the `app` directory
-    ```sh
-    cd your_repository/app
-    ```
-3.  Install NPM packages
+2.  Install NPM packages
     ```sh
     npm install
+    ```
+
+### Configuration
+
+To use the AI features, you need to add your Google API key to a local environment file.
+
+1.  Create a file named `.env.local` in the root of the project.
+2.  Add the following line to the file, replacing `your_api_key` with your actual key:
+    ```
+    GOOGLE_API_KEY=your_api_key
     ```
 
 ### Running the Application
@@ -37,8 +43,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Features
 
--   **CBT (Computer Based Test) Section:**
-    -   Practice exam questions with a clean, intuitive interface.
-    -   Navigate between questions using "Next," "Previous," and a question number grid.
-    -   A countdown timer to simulate exam conditions.
-    -   Score tracking and a results page to view your performance.
+-   **User Authentication:** A robust authentication system using `next-auth` with support for different user roles.
+-   **Role-Based Access Control:** The application supports different user roles, such as student, lecturer, and admin, with role-based UI elements and protected API routes.
+-   **AI-Powered Explanations:** The CBT results page can generate detailed, AI-powered explanations for exam answers using Google's Gemini model.
